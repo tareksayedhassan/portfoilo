@@ -1,11 +1,15 @@
+"use client";
+import PageTransitions from "@/components/ul/PageTransitions";
+import StairTransition from "@/components/ul/StairTransition";
 import Header from "@/components/ul/header";
-import React from "react";
 
 const HomePage = () => {
   return (
-    <div>
+    <PageTransitions>
+      <StairTransition />
       <Header />
-    </div>
+      <main>{/* محتوى الصفحة */}</main>
+    </PageTransitions>
   );
 };
 

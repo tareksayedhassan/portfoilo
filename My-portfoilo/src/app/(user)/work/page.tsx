@@ -1,7 +1,7 @@
-import React from "react";
+"use client";
 
 const workPage = () => {
-  return <div>page</div>;
+  return <main>{/* محتوى الصفحة */}</main>;
 };
 
 export default workPage;

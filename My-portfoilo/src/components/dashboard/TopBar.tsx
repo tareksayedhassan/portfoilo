@@ -34,6 +34,8 @@ const TopBar = () => {
           name={decded.name}
           role={decded.role}
           avatar={decded.avatar || `/uploads/${decded?.avatar}`}
+          nameClass="text-gray-800"
+          roleClass="text-gray-500"
         />
       </div>
     </div>

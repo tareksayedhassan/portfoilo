@@ -15,10 +15,11 @@ const PageTransitions = ({ children }: PageTransitionsProps) => {
     <AnimatePresence mode="wait">
       <motion.div
         key={pathname}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -20 }}
+        initial={{ opacity: 0 }} // يبدأ مخفي
+        animate={{ opacity: 1 }} // يظهر
+        exit={{ opacity: 0 }} // لما يخرج، يختفي
         transition={{ duration: 0.4, ease: "easeInOut" }}
+        className="min-h-screen w-full"
       >
         {children}
       </motion.div>

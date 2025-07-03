@@ -85,14 +85,14 @@ const UserPage = () => {
           {toast.message}
         </div>
       )}
-
       {/* Header */}
       <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
         <h2 className="text-2xl font-semibold text-gray-900">Users</h2>
-        <Link href="/dashboard/users/addUser" passHref>
-          <a className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded transition">
-            + Add User
-          </a>
+        <Link
+          href="/dashboard/users/addUser"
+          className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded transition"
+        >
+          + Add User
         </Link>
 
         <div className="relative w-full max-w-xs">

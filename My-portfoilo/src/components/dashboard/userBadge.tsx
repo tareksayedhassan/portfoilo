@@ -1,4 +1,3 @@
-// userBadge.tsx
 "use client";
 import React from "react";
 import Image from "next/image";
@@ -7,24 +6,31 @@ interface Props {
   name: string;
   role?: string;
   avatar?: string;
+  nameClass?: string;
+  roleClass?: string;
 }
 
-const UserProfileBadge: React.FC<Props> = ({ name, role = "user", avatar }) => {
+const UserProfileBadge: React.FC<Props> = ({
+  name,
+  role = "user",
+  avatar,
+  nameClass = "text-white",
+  roleClass = "text-white",
+}) => {
   return (
-    <div
-      className="flex align-items-center gap-2 px-2 py-1 border-round surface-100 shadow-1"
-      style={{ border: "1px solid var(--surface-border)" }}
-    >
+    <div className="flex items-center gap-3">
       <Image
         src={avatar ? `/uploads/${avatar}` : "/user-avatar.png"}
         alt="Avatar"
-        width={35}
-        height={35}
-        className="border-circle"
+        width={40}
+        height={40}
+        className="rounded-full object-cover border border-gray-200 shadow-sm"
       />
-      <div className="flex flex-column justify-content-center">
-        <span className="text-sm font-medium text-color">{name}</span>
-        <span className="text-xs text-color-secondary">{role}</span>
+      <div className="leading-tight">
+        <span className={`block text-sm font-semibold ${nameClass}`}>
+          {name}
+        </span>
+        <span className={`block text-xs capitalize ${roleClass}`}>{role}</span>
       </div>
     </div>
   );

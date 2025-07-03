@@ -9,6 +9,6 @@ export type DecodedToken = {
   name: string;
   email?: string;
   id?: number;
-  role?: string;
+  role?: "user" | "admin";
   avatar?: string;
 };

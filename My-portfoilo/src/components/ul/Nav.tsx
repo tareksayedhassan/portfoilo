@@ -1,10 +1,12 @@
 "use client";
+
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import React from "react";
 import Cookie from "cookie-universal";
 import { jwtDecode } from "jwt-decode";
 import { DecodedToken } from "@/Types/CustomJWTDecoded";
+import UserProfileBadge from "@/components/dashboard/userBadge";
 
 const Nav = () => {
   const pathname = usePathname();
@@ -12,11 +14,16 @@ const Nav = () => {
   const cookie = Cookie();
   const token = cookie.get("Bearer");
 
-  let name = "";
+  let name: string | undefined;
+  let role: string | undefined;
+  let avatar: string | undefined;
+
   if (token) {
     try {
       const decoded: DecodedToken = jwtDecode(token);
       name = decoded.name;
+      role = decoded.role;
+      avatar = decoded.avatar;
     } catch (err) {
       console.error("Invalid token");
     }
@@ -60,12 +67,17 @@ const Nav = () => {
 
       {name && (
         <>
-          <p className="text-[#00ff99] capitalize font-semibold">
-            Hello, {name}
-          </p>
+          <UserProfileBadge
+            name={name}
+            role={role || "user"}
+            avatar={avatar || ""}
+            nameClass={"text-[#00ff99]"}
+            roleClass="text-[#00ff99]"
+          />
+
           <button
             onClick={logOut}
-            className="text-[#00ff99]  px-3 py-1 rounded-md hover:bg-[#00ff99] hover:text-white transition"
+            className="text-[#00ff99] px-3 py-1 rounded-md hover:bg-[#00ff99] hover:text-white transition"
           >
             Log out
           </button>
