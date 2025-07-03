@@ -44,7 +44,7 @@ const SideBar = () => {
   return (
     <div className="side-bar" style={sidebarStyle}>
       <span className="text-sm block mb-3 text-400">Navigation</span>
-      <Link href={"dashboard"} className="nav-icon gap-2">
+      <Link href={"/dashboard"} className="nav-icon gap-2">
         <IconPlayer icon={dashboardIcon} />
         <span className="label">Dashboard</span>
       </Link>
@@ -52,11 +52,11 @@ const SideBar = () => {
         <IconPlayer icon={users} />
         <span className="label">Users</span>
       </Link>
-      <Link href={"categories"} className="nav-icon gap-2">
+      <Link href={"/dashboard/categories"} className="nav-icon gap-2">
         <IconPlayer icon={layer} />
         <span className="label">Categories</span>
       </Link>
-      <Link href={"projects"} className="nav-icon gap-2">
+      <Link href={"/dashboard/projects"} className="nav-icon gap-2">
         <IconPlayer icon={projects} />
         <span className="label">Projects</span>
       </Link>

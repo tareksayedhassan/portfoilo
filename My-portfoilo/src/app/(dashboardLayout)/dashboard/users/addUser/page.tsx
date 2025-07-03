@@ -11,7 +11,7 @@ const roleOptions = [
   { label: "User", value: "user" },
 ];
 
-const Page = () => {
+const addUser = () => {
   const [loading, setLoading] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -49,7 +49,7 @@ const Page = () => {
         },
       });
 
-      if (res.data.status === 200) {
+      if (res.data.status === 201) {
         setToast({ type: "success", message: "User added successfully!" });
         router.push("/dashboard/users");
       } else {
@@ -191,4 +191,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default addUser;

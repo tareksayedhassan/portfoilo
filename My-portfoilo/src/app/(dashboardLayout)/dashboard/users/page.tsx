@@ -2,7 +2,6 @@
 
 import React, { useRef, useState } from "react";
 import useSWR from "swr";
-import { fetcher } from "@/ApiCalld/fetcher";
 import Cookie from "cookie-universal";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -38,10 +37,37 @@ const UserPage = () => {
     toastTimeoutRef.current = setTimeout(() => setToast(null), 3000);
   };
 
+  const cookie = Cookie();
+  const token = cookie.get("Bearer");
+
+  const fetcher = async (url: string) => {
+    const token = cookie.get("Bearer");
+
+    if (!token) {
+      throw new Error("No token found");
+    }
+
+    const res = await fetch(url, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    if (!res.ok) {
+      const error = new Error("An error occurred while fetching the data.");
+      // @ts-ignore
+      error.status = res.status;
+      throw error;
+    }
+
+    return res.json();
+  };
+
   const { data, error, isLoading, mutate } = useSWR(
     `${BASE_URL}/${GET_ALL_USER}?page=${currentPage}&pageSize=${rowsPerPage}&search=${search}`,
     fetcher
   );
+
   const users: User[] = data?.data || [];
   const totalRecords: number = data?.total || 0;
   const totalPages = Math.ceil(totalRecords / rowsPerPage);
@@ -94,7 +120,7 @@ const UserPage = () => {
       )}
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-xl font-bold">Users List</h2>
-        <Button label="Add User" href="users/adduser" />
+        <Button label="Add User" href="/dashboard/users/addUser" />
       </div>
 
       <div className="grid-container">
