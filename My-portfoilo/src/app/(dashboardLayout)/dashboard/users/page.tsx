@@ -6,9 +6,11 @@ import { fetcher } from "@/ApiCalld/fetcher";
 import Cookie from "cookie-universal";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { BASE_URL, GET_ALL_USER } from "@/ApiCalld/Api";
+import { BASE_URL, DELETE_USER, GET_ALL_USER } from "@/ApiCalld/Api";
 import { DecodedToken } from "@/Types/CustomJWTDecoded";
 import "./style.css";
+import Image from "next/image";
+import Button from "@/components/ul/Button";
 const UserPage = () => {
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
@@ -40,7 +42,6 @@ const UserPage = () => {
     `${BASE_URL}/${GET_ALL_USER}?page=${currentPage}&pageSize=${rowsPerPage}&search=${search}`,
     fetcher
   );
-
   const users: User[] = data?.data || [];
   const totalRecords: number = data?.total || 0;
   const totalPages = Math.ceil(totalRecords / rowsPerPage);
@@ -54,7 +55,7 @@ const UserPage = () => {
     if (!confirmDelete) return;
 
     try {
-      await fetch(`/api/users/${id}`, {
+      await fetch(`${BASE_URL}/${DELETE_USER}/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${Cookie().get("Bearer")}`,
@@ -65,6 +66,10 @@ const UserPage = () => {
     } catch {
       showToast("error", "Failed to delete user");
     }
+  };
+  const getImageUrl = (avatar: string | undefined) => {
+    if (!avatar) return "/uploads/default.jpg";
+    return `/uploads/${avatar}`;
   };
 
   const editUser = (user: User) => {
@@ -87,7 +92,11 @@ const UserPage = () => {
           {toast.message}
         </div>
       )}
-      <h2>Users List</h2>
+      <div className="flex justify-between items-center mb-4">
+        <h2 className="text-xl font-bold">Users List</h2>
+        <Button label="Add User" href="users/adduser" />
+      </div>
+
       <div className="grid-container">
         <div className="box-2">
           <div className="table-container">
@@ -108,14 +117,51 @@ const UserPage = () => {
                       <td>{user.name}</td>
                       <td>{user.email}</td>
                       <td>
-                        <img src={user.avatar} alt={user.name} width={50} />
+                        <Image
+                          src={getImageUrl(user.avatar)}
+                          alt={user.name || "User avatar"}
+                          width={50}
+                          height={50}
+                          style={{ borderRadius: "4px", objectFit: "cover" }}
+                        />
                       </td>
                       <td>{user.role}</td>
                       <td>
-                        <Link href={`/users/${user.id}`}>edit</Link>
-                        <button onClick={() => user.id && deleteUser(user.id)}>
-                          delete
-                        </button>
+                        <div
+                          style={{
+                            display: "flex",
+                            gap: "0.5rem",
+                            alignItems: "center",
+                          }}
+                        >
+                          <Link
+                            href={`/users/${user.id}`}
+                            style={{
+                              padding: "6px 12px",
+                              backgroundColor: "#3b82f6",
+                              color: "white",
+                              borderRadius: "4px",
+                              fontSize: "0.875rem",
+                              textDecoration: "none",
+                            }}
+                          >
+                            Edit
+                          </Link>
+                          <button
+                            onClick={() => user.id && deleteUser(user.id)}
+                            style={{
+                              padding: "6px 12px",
+                              backgroundColor: "#ef4444",
+                              color: "white",
+                              border: "none",
+                              borderRadius: "4px",
+                              fontSize: "0.875rem",
+                              cursor: "pointer",
+                            }}
+                          >
+                            Delete
+                          </button>
+                        </div>
                       </td>
                     </tr>
                   ))}

@@ -12,16 +12,14 @@ export default function DashboardLayout({
     <div style={{ height: "100vh", display: "flex", flexDirection: "column" }}>
       <TopBar />
       <div style={{ display: "flex", flex: 1 }}>
-        {/* Sidebar with fixed width */}
         <div style={{ width: "180px", flexShrink: 0 }}>
           <SideBar />
         </div>
 
-        {/* Main Content Area */}
         <main
           style={{
             flex: 1,
-            padding: "1rem",
+            padding: "3rem",
             backgroundColor: "#f9f9f9",
           }}
         >

@@ -6,6 +6,7 @@ import React, { useEffect, useRef, useState } from "react";
 import useSWR from "swr";
 import { fetcher } from "@/ApiCalld/fetcher";
 import Image from "next/image";
+import Button from "@/components/ul/Button";
 
 type User = {
   data: {
@@ -92,7 +93,6 @@ const EditPage = () => {
           {toast.message}
         </div>
       )}
-
       <div className="flex justify-center items-center min-h-screen bg-gray-100 p-4">
         <div className="w-full max-w-sm bg-white rounded-lg shadow-lg p-6">
           <div className="flex flex-col items-center gap-4">

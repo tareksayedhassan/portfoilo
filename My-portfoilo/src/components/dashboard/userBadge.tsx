@@ -24,8 +24,10 @@ const UserProfileBadge: React.FC<Props> = ({
         alt="Avatar"
         width={40}
         height={40}
-        className="rounded-full object-cover border border-gray-200 shadow-sm"
+        style={{ borderRadius: "50%", objectFit: "cover" }}
+        className="border border-gray-200 shadow-sm"
       />
+
       <div className="leading-tight">
         <span className={`block text-sm font-semibold ${nameClass}`}>
           {name}
