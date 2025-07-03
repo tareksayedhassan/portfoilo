@@ -4,14 +4,7 @@
 import Cookie from "cookie-universal";
 import { jwtDecode } from "jwt-decode";
 import UserProfileBadge from "./userBadge";
-
-type DecodedToken = {
-  name: string;
-  email?: string;
-  id?: number;
-  role?: string;
-  avatar?: string;
-};
+import { DecodedToken } from "@/Types/CustomJWTDecoded";
 
 const TopBar = () => {
   const cookie = Cookie();

@@ -15,8 +15,8 @@ body {
 
 .app-row {
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   width: 100%;
 }
 
@@ -31,7 +31,7 @@ body {
       white 50%,
       transparent 50%
     ),
-    url("../../../public/pexels-eberhardgross-1421903.jpg");
+    url("../../../../public/pexels-eberhardgross-1421903.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -43,20 +43,16 @@ body {
 
   display: flex;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: center;
   padding-left: 5%;
-  padding-top: 40px;
 }
 
-/* الفورم الداخلي */
 .form-content {
-  width: 30%;
+  width: 35%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-top: 20px;
 }
-
 .form-content h1 {
   margin-top: -10px;
   margin-bottom: 20px;
@@ -80,8 +76,7 @@ body {
   border-radius: 3px;
   border: 0;
   background-color: white;
-  width: 130%;
-  max-width: 400px;
+  width: 100%;
   border-bottom: 3px solid transparent;
   font-family: "Lato", sans-serif;
   box-shadow: 0 0 10px rgba(153, 152, 152) inset;
