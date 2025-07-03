@@ -4,7 +4,7 @@ import Nav from "./Nav";
 
 const Header = () => {
   return (
-    <header className="py-8 xl:py-12 text-white">
+    <header className="sticky top-4 py-8 xl:py-12 text-white bg-[#1c1c22] z-10">
       <div className="container mx-auto flex justify-between items-center">
         {/* logo */}
         <Link href={"/"}>

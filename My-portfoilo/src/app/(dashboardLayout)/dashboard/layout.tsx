@@ -13,7 +13,7 @@ export default function DashboardLayout({
       <TopBar />
       <div style={{ display: "flex", flex: 1 }}>
         {/* Sidebar with fixed width */}
-        <div style={{ width: "200px", flexShrink: 0 }}>
+        <div style={{ width: "180px", flexShrink: 0 }}>
           <SideBar />
         </div>
 
@@ -21,10 +21,7 @@ export default function DashboardLayout({
         <main
           style={{
             flex: 1,
-            padding: "2rem",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "flex-start",
+            padding: "1rem",
             backgroundColor: "#f9f9f9",
           }}
         >

@@ -1,0 +1,103 @@
+:root {
+  --muted-background: rgba(39, 39, 42, 0.5);
+  --background: rgba(9, 9, 11, 1);
+  --border: rgba(39, 39, 42, 1);
+  --accent: #ffffff;
+  --cells-hover-bg: #222831;
+  --cell-bg: #4a102a;
+}
+
+.grid-container {
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  min-height: 100vh;
+  margin: 0;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100vh;
+  padding: 1.5rem;
+  overflow-y: auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.box-2 {
+  max-width: 1100px; /* كبرت العرض شوية */
+  width: 100%;
+  background-color: var(--background);
+  border-radius: 8px;
+  padding: 1.5rem; /* زودت البادينج */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  overflow-x: auto;
+  color: var(--accent);
+}
+
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 1rem; /* كبرت الخط شوية */
+  background: transparent;
+  color: inherit;
+  table-layout: auto;
+  word-wrap: break-word;
+}
+
+thead th {
+  background: var(--muted-background);
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+tbody td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border);
+  white-space: normal;
+  min-width: 100px;
+  vertical-align: middle;
+}
+
+tbody tr:hover td {
+  background: linear-gradient(135deg, #8b5cf6, #ec4899);
+  color: white;
+  box-shadow: 0 0 12px #a855f7, 0 0 30px #f472b6;
+  transition: all 0.3s ease-in-out;
+}
+
+img {
+  max-width: 50px;
+  height: auto;
+  border-radius: 4px;
+}
+
+@media (max-width: 600px) {
+  .box-2 {
+    max-width: 100%;
+    padding: 0.5rem;
+  }
+
+  table {
+    font-size: 0.9rem;
+  }
+
+  thead th {
+    white-space: normal;
+  }
+}
+
+h2 {
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+}

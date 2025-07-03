@@ -11,7 +11,7 @@ export default function UserLayout({
     <PageTransitions>
       <Header />
       <StairTransition />
-      {children}
+      <main className="pt-[130px] px-4 max-w-7xl mx-auto">{children}</main>
     </PageTransitions>
   );
 }
