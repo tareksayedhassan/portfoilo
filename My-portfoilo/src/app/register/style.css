@@ -1,0 +1,112 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.app-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+}
+
+.app-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.h-100 {
+  height: 100vh;
+}
+
+.form {
+  background-image: linear-gradient(
+      110deg,
+      white 0%,
+      white 50%,
+      transparent 50%
+    ),
+    url("../../../public/pexels-eberhardgross-1421903.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 30rem;
+  width: 100%;
+  max-width: 1000px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-left: 5%;
+  padding-top: 40px;
+}
+
+/* الفورم الداخلي */
+.form-content {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 20px;
+}
+
+.form-content h1 {
+  margin-top: -10px;
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+}
+
+.app-form-control {
+  margin-bottom: 20px;
+  position: relative;
+  width: 100%;
+}
+
+.app-form-control label,
+.app-form-control input {
+  display: block;
+}
+
+.app-form-control input {
+  padding: 20px 20px;
+  outline: none;
+  border-radius: 3px;
+  border: 0;
+  background-color: white;
+  width: 130%;
+  max-width: 400px;
+  border-bottom: 3px solid transparent;
+  font-family: "Lato", sans-serif;
+  box-shadow: 0 0 10px rgba(153, 152, 152) inset;
+}
+
+.app-form-control label {
+  position: absolute;
+  top: -20px;
+  left: 0px;
+  font-size: 13px;
+  color: gray;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.app-form-control input:placeholder-shown + label {
+  opacity: 0;
+  visibility: hidden;
+  top: 20px;
+}
+
+.app-form-control input:focus:valid {
+  border-bottom: 3px solid green;
+}
+
+.app-form-control input:focus:not(:valid) {
+  border-bottom: 3px solid orangered;
+}
