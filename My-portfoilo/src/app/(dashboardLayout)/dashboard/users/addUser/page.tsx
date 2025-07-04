@@ -76,28 +76,33 @@ const addUser = () => {
       )}
 
       <h3 className="text-center text-2xl font-bold mb-8">Add User</h3>
-
-      <form onSubmit={handleSubmit} className="flex flex-col gap-6">
-        <div className="flex flex-col gap-1">
-          <label htmlFor="name" className="font-medium">
+      <form onSubmit={handleSubmit} className="max-w-sm mx-auto">
+        <div className="mb-5">
+          <label
+            htmlFor="Name"
+            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >
             Name
           </label>
           <input
-            id="name"
-            type="text"
+            type="Name"
+            id="Name"
             value={name}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
               setName(e.target.value)
             }
-            placeholder="Enter name"
             required
-            className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="Enter Your Name"
           />
         </div>
-
-        <div className="flex flex-col gap-1">
-          <label htmlFor="email" className="font-medium">
-            Email
+        {/*  */}
+        <div className="mb-5">
+          <label
+            htmlFor="emeil"
+            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >
+            email
           </label>
           <input
             id="email"
@@ -107,13 +112,16 @@ const addUser = () => {
               setEmail(e.target.value)
             }
             placeholder="Enter email"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             required
-            className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
-
-        <div className="flex flex-col gap-1">
-          <label htmlFor="password" className="font-medium">
+        {/*  */}
+        <div className="mb-5">
+          <label
+            htmlFor="Password"
+            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >
             Password
           </label>
           <input
@@ -123,11 +131,12 @@ const addUser = () => {
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
               setPassword(e.target.value)
             }
-            placeholder="Enter password"
             required
-            className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="********"
           />
         </div>
+        {/*  */}
 
         <div className="flex flex-col gap-1">
           <label htmlFor="role" className="font-medium">
@@ -152,6 +161,7 @@ const addUser = () => {
             ))}
           </select>
         </div>
+        {/*  */}
 
         <div className="flex flex-col gap-2">
           <label htmlFor="avatar" className="font-medium">

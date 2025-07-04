@@ -1,9 +1,9 @@
 "use client";
-import React from "react";
+import React, { ReactNode } from "react";
 import "./button.css";
 import Link from "next/link";
 type ButtonProps = {
-  label: string;
+  label: ReactNode;
   href: string;
 };
 const Button = ({ label, href }: ButtonProps) => {
