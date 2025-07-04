@@ -107,6 +107,28 @@ const UserPage = () => {
       setCurrentPage(newPage);
     }
   };
+  const renderPages = () => {
+    const pages = [];
+    for (let i = 1; i <= totalPages; i++) {
+      pages.push(
+        <li key={i}>
+          <button
+            onClick={() => handlePageChange(i)}
+            className={`flex items-center justify-center px-4 h-10 leading-tight border 
+            ${
+              i === currentPage
+                ? "text-blue-600 border-blue-300 bg-blue-50 dark:bg-gray-700 dark:text-white"
+                : "text-gray-500 bg-white border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+            }`}
+          >
+            {i}
+          </button>
+        </li>
+      );
+    }
+    return pages;
+  };
+
   return (
     <>
       {toast && (
@@ -193,6 +215,52 @@ const UserPage = () => {
                   ))}
               </tbody>
             </table>
+            {/* pagention */}
+            <div className="w-full flex justify-center mt-9">
+              <div className="min-w-[500px] md:min-w-[500px] lg:min-w-[600px] max-w-full">
+                <nav aria-label="Pagination">
+                  <ul className="flex justify-center items-center flex-wrap gap-3">
+                    {/* Previous */}
+                    <li>
+                      <button
+                        onClick={() => handlePageChange(currentPage - 1)}
+                        disabled={currentPage === 1}
+                        className="px-4 py-2 rounded-md bg-white text-gray-700 border border-gray-300 hover:bg-gray-100 transition disabled:opacity-50"
+                      >
+                        &laquo;
+                      </button>
+                    </li>
+
+                    {/* Page numbers */}
+                    {Array.from({ length: totalPages }, (_, i) => (
+                      <li key={i}>
+                        <button
+                          onClick={() => handlePageChange(i + 1)}
+                          className={`px-4 py-2 rounded-md border transition ${
+                            currentPage === i + 1
+                              ? "bg-blue-600 text-white border-blue-600"
+                              : "bg-white text-gray-700 border-gray-300 hover:bg-gray-100"
+                          }`}
+                        >
+                          {i + 1}
+                        </button>
+                      </li>
+                    ))}
+
+                    {/* Next */}
+                    <li>
+                      <button
+                        onClick={() => handlePageChange(currentPage + 1)}
+                        disabled={currentPage === totalPages}
+                        className="px-4 py-2 rounded-md bg-white text-gray-700 border border-gray-300 hover:bg-gray-100 transition disabled:opacity-50"
+                      >
+                        &raquo;
+                      </button>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
           </div>
         </div>
       </div>

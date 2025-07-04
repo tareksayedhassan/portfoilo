@@ -19,7 +19,7 @@ export default function DashboardLayout({
         <main
           style={{
             flex: 1,
-            padding: "3rem",
+            padding: "1.5rem",
             backgroundColor: "#f9f9f9",
           }}
         >
