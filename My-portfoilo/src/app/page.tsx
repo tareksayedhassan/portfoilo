@@ -12,13 +12,13 @@ const HomePage = () => {
     <PageTransitions>
       <StairTransition />
       <Header />
-      <div className="h-24 xl:h-24"></div>{" "}
+      <div className="h-24 xl:h-24"></div>
       <section className="h-full pt-32 xl:pt-24">
         <div className="container mx-auto h-full">
-          <div className="flex flex-col xl:flex-row items-center justify-between xl:pt-8 xl:pb-24">
+          <div className="flex flex-col xl:flex-row items-center justify-between xl:pt-8 xl:pb-24 gap-8">
             {/* text */}
-            <div className="text-center xl:text-left text-white">
-              <span className="text:xl"> Full Stack Developer</span>
+            <div className="text-center xl:text-left text-white order-2 xl:order-1">
+              <span className="text-xl"> Full Stack Developer</span>
               <h1 className="h1 mb-6">
                 Hello I'm <br />{" "}
                 <span className="text-[#00ff99]">Tarek Elsayed</span>
@@ -33,9 +33,7 @@ const HomePage = () => {
                 experiences."
               </p>
               {/* btn and socials */}
-
               <div className="flex flex-col xl:flex-row items-center gap-8 mt-12">
-                {" "}
                 <Button
                   variant="outline"
                   size="lg"
@@ -54,7 +52,7 @@ const HomePage = () => {
             </div>
 
             {/* photo */}
-            <div>
+            <div className="mt-12 order-1 xl:order-2 mb-8">
               <Photo />
             </div>
           </div>
