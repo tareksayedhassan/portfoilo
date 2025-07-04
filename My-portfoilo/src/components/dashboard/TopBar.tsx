@@ -14,7 +14,6 @@ const TopBar = () => {
   if (token) {
     try {
       decded = jwtDecode<DecodedToken>(token);
-      console.log(decded);
     } catch (error) {
       console.error("Invalid token:", error);
     }

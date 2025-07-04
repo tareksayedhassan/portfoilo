@@ -6,7 +6,7 @@ import React, { useEffect, useRef, useState } from "react";
 import useSWR from "swr";
 import { fetcher } from "@/ApiCalld/fetcher";
 import Image from "next/image";
-import Button from "@/components/ul/Button";
+import Button from "@/components/CustomUi/Button";
 
 type User = {
   data: {

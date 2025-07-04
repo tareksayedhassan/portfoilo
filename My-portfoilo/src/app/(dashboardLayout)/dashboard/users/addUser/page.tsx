@@ -6,6 +6,18 @@ import axios from "axios";
 import Cookie from "cookie-universal";
 import { useRouter } from "next/navigation";
 
+import { Input } from "@/components/ui/input";
+import { Form, FormControl, FormItem, FormLabel } from "@/components/ui/form";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Button } from "@/components/ui/button";
+import { useForm } from "react-hook-form";
+
 const roleOptions = [
   { label: "Admin", value: "admin" },
   { label: "User", value: "user" },
@@ -22,6 +34,15 @@ const addUser = () => {
     type: "success" | "error";
     message: string;
   } | null>(null);
+
+  const form = useForm({
+    defaultValues: {
+      name: "",
+      email: "",
+      password: "",
+      role: "",
+    },
+  });
 
   const cookie = Cookie();
   const token = cookie.get("Bearer");
@@ -49,7 +70,7 @@ const addUser = () => {
         },
       });
 
-      if (res.data.status === 201) {
+      if (res.status === 201) {
         setToast({ type: "success", message: "User added successfully!" });
         router.push("/dashboard/users");
       } else {
@@ -63,140 +84,143 @@ const addUser = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-6">
+    <div className="flex items-start justify-center min-h-screen bg-gray-50 dark:bg-gray-900">
       {/* Toast */}
       {toast && (
         <div
-          className={`fixed top-5 right-5 px-4 py-2 rounded shadow text-white ${
+          className={`fixed top-6 right-6 px-6 py-3 rounded-lg shadow-lg text-white text-lg font-medium ${
             toast.type === "success" ? "bg-green-600" : "bg-red-600"
           }`}
         >
           {toast.message}
         </div>
       )}
-
-      <h3 className="text-center text-2xl font-bold mb-8">Add User</h3>
-      <form onSubmit={handleSubmit} className="max-w-sm mx-auto">
-        <div className="mb-5">
-          <label
-            htmlFor="Name"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-          >
-            Name
-          </label>
-          <input
-            type="Name"
-            id="Name"
-            value={name}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setName(e.target.value)
-            }
-            required
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Enter Your Name"
-          />
-        </div>
-        {/*  */}
-        <div className="mb-5">
-          <label
-            htmlFor="emeil"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-          >
-            email
-          </label>
-          <input
-            id="email"
-            type="email"
-            value={email}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setEmail(e.target.value)
-            }
-            placeholder="Enter email"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            required
-          />
-        </div>
-        {/*  */}
-        <div className="mb-5">
-          <label
-            htmlFor="Password"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-          >
-            Password
-          </label>
-          <input
-            id="password"
-            type="password"
-            value={password}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setPassword(e.target.value)
-            }
-            required
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="********"
-          />
-        </div>
-        {/*  */}
-
-        <div className="flex flex-col gap-1">
-          <label htmlFor="role" className="font-medium">
-            Select Role
-          </label>
-          <select
-            id="role"
-            value={role}
-            onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
-              setRole(e.target.value)
-            }
-            required
-            className="w-full border border-gray-300 rounded px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-          >
-            <option value="" disabled>
-              -- Select Role --
-            </option>
-            {roleOptions.map((opt) => (
-              <option key={opt.value} value={opt.value}>
-                {opt.label}
-              </option>
-            ))}
-          </select>
-        </div>
-        {/*  */}
-
-        <div className="flex flex-col gap-2">
-          <label htmlFor="avatar" className="font-medium">
-            Image
-          </label>
-          <input
-            type="file"
-            id="avatar"
-            accept="image/*"
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              e.target.files && setAvatarFile(e.target.files[0])
-            }
-            className="w-full"
-          />
-          {avatarFile && (
-            <img
-              src={URL.createObjectURL(avatarFile)}
-              alt="Preview"
-              className="mt-3 w-40 h-40 object-cover rounded-md shadow"
-            />
-          )}
-        </div>
-
-        <button
-          type="submit"
-          disabled={loading}
-          className={`mt-4 py-2 rounded text-white font-semibold transition ${
-            loading
-              ? "bg-gray-400 cursor-not-allowed"
-              : "bg-blue-600 hover:bg-blue-700"
-          }`}
+      <Form {...form}>
+        <form
+          onSubmit={handleSubmit}
+          className="max-w-3xl w-full mx-auto space-y-11 p-16 bg-white dark:bg-gray-950 rounded-xl "
         >
-          {loading ? "Adding..." : "Add User"}
-        </button>
-      </form>
+          <h3 className="text-center text-3xl font-bold text-gray-800 dark:text-white">
+            Add User
+          </h3>
+
+          {/* Name */}
+          <FormItem>
+            <FormLabel
+              htmlFor="name"
+              className="text-lg font-medium text-gray-700 dark:text-gray-200"
+            >
+              Name
+            </FormLabel>
+            <FormControl>
+              <Input
+                id="name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="Enter name"
+                className="text-lg p-3 rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+              />
+            </FormControl>
+          </FormItem>
+
+          {/* Email */}
+          <FormItem>
+            <FormLabel
+              htmlFor="email"
+              className="text-lg font-medium text-gray-700 dark:text-gray-200"
+            >
+              Email
+            </FormLabel>
+            <FormControl>
+              <Input
+                id="email"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="example@mail.com"
+                className="text-lg p-3 rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+              />
+            </FormControl>
+          </FormItem>
+
+          {/* Password */}
+          <FormItem>
+            <FormLabel
+              htmlFor="password"
+              className="text-lg font-medium text-gray-700 dark:text-gray-200"
+            >
+              Password
+            </FormLabel>
+            <FormControl>
+              <Input
+                id="password"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="••••••••"
+                className="text-lg p-3 rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+              />
+            </FormControl>
+          </FormItem>
+
+          {/* Role */}
+          <FormItem>
+            <FormLabel
+              htmlFor="role"
+              className="text-lg font-medium text-gray-700 dark:text-gray-200"
+            >
+              Select Role
+            </FormLabel>
+            <FormControl>
+              <Select value={role} onValueChange={setRole}>
+                <SelectTrigger
+                  id="role"
+                  className="text-lg p-3 rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+                >
+                  <SelectValue placeholder="Choose role" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="admin" className="text-lg">
+                    Admin
+                  </SelectItem>
+                  <SelectItem value="user" className="text-lg">
+                    User
+                  </SelectItem>
+                </SelectContent>
+              </Select>
+            </FormControl>
+          </FormItem>
+
+          {/* Avatar */}
+          <FormItem>
+            <FormLabel
+              htmlFor="avatar"
+              className="text-lg font-medium text-gray-700 dark:text-gray-200"
+            >
+              Avatar
+            </FormLabel>
+            <FormControl>
+              <Input
+                id="avatar"
+                type="file"
+                onChange={(e) =>
+                  e.target.files && setAvatarFile(e.target.files[0])
+                }
+                className="text-lg p-3 rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+              />
+            </FormControl>
+          </FormItem>
+
+          {/* Submit */}
+          <Button
+            type="submit"
+            className="w-full py-3 text-lg font-semibold bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 rounded-md"
+            disabled={loading}
+          >
+            {loading ? "Adding..." : "Add User"}
+          </Button>
+        </form>
+      </Form>
     </div>
   );
 };

@@ -50,7 +50,7 @@ const Nav = () => {
   const allLinks = name ? links : [...links, ...authLinks];
 
   return (
-    <nav className="flex gap-8 items-center">
+    <nav className="flex gap-8 items-center ml-auto">
       {allLinks.map((item, key) => (
         <Link
           key={key}

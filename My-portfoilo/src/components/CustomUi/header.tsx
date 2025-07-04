@@ -1,7 +1,8 @@
 import Link from "next/link";
 import React from "react";
 import Nav from "./Nav";
-
+import MobileNav from "./MobileNav";
+import { Button } from "@/components/ui/button";
 const Header = () => {
   return (
     <header className="sticky top-4 py-8 xl:py-12 text-white bg-[#1c1c22] z-10">
@@ -16,12 +17,18 @@ const Header = () => {
         <div className="hidden xl:flex items-center gap-8">
           <Nav />
           <Link href={"/content"}>
-            <button className="bg-gray-900 text-white px-9 py-9 rounded-l-lg hover:bg-gray-800 transition">
+            <Button
+              variant="secondary"
+              className="bg-[#333333] text-white rounded-lg py-4 px-8 text-lg transition-colors duration-300 hover:bg-[#444444]"
+            >
               Hire me
-            </button>
+            </Button>
           </Link>
         </div>
-        <div className="xl:hidden">mobile nav</div>
+        {/* mobile Nav */}
+        <div className="xl:hidden">
+          <MobileNav />
+        </div>
       </div>
     </header>
   );

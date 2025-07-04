@@ -1,7 +1,7 @@
 import { DecodedToken } from "@/Types/CustomJWTDecoded";
 import Link from "next/link";
 import React from "react";
-import Button from "../../ul/Button";
+import Button from "../../CustomUi/Button";
 import "./style.css";
 import Image from "next/image";
 

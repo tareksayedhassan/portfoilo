@@ -11,5 +11,5 @@ export type DecodedToken = {
   id?: number;
   role?: "user" | "admin";
   avatar?: string;
-  createdAt: string;
+  createdAt?: string;
 };

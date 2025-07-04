@@ -1,14 +1,59 @@
 "use client";
-import PageTransitions from "@/components/ul/PageTransitions";
-import StairTransition from "@/components/ul/StairTransition";
-import Header from "@/components/ul/header";
+import PageTransitions from "@/components/CustomUi/PageTransitions";
+import Socials from "@/components/CustomUi/Socials";
+import StairTransition from "@/components/CustomUi/StairTransition";
+import Header from "@/components/CustomUi/header";
+import { Button } from "@/components/ui/button";
+import { FiDownload } from "react-icons/fi";
 
 const HomePage = () => {
   return (
     <PageTransitions>
       <StairTransition />
       <Header />
-      <main>{/* محتوى الصفحة */}</main>
+      <div className="h-24 xl:h-24"></div>{" "}
+      {/* Spacer للتعويض عن ارتفاع الـ Header */}
+      <section className="h-full pt-32 xl:pt-24">
+        <div className="container mx-auto h-full">
+          <div className="flex flex-col xl:flex-row items-center justify-between xl:pt-8 xl:pb-24">
+            {/* text */}
+            <div className="text-center xl:text-left text-white">
+              <span className="text:xl"> Full Stack Developer</span>
+              <h1 className="h1 mb-6">
+                Hello I'm <br />{" "}
+                <span className="text-[#00ff99]">Tarek Elsayed</span>
+              </h1>
+              <p className="max-w-[500px] mb-9 text-white/80">
+                "I thrive on building full-stack applications from scratch,
+                turning ideas into seamless user experiences."
+              </p>
+              <p className="max-w-[500px] mb-9 text-white/80">
+                "Passionate about crafting complete projects, combining both
+                front-end and back-end to create cohesive, intuitive
+                experiences."
+              </p>
+              {/* btn and socials */}
+
+              <div className="flex flex-col xl:flex-row items-center gap-8">
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="uppercase flex items-center gap-2 bg-transparent border-[#00ff99] text-[#00ff99] hover:bg-[#00ff99] hover:text-[#1c1c22]"
+                >
+                  <span>Download CV</span>
+                  <FiDownload className="text-xl" />
+                </Button>
+                <div className="mb-8 xl:mb-0">
+                  <Socials />
+                </div>
+              </div>
+            </div>
+
+            {/* photo */}
+            <div>photo</div>
+          </div>
+        </div>
+      </section>
     </PageTransitions>
   );
 };

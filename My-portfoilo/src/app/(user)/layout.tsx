@@ -1,6 +1,6 @@
-import PageTransitions from "@/components/ul/PageTransitions";
-import StairTransition from "@/components/ul/StairTransition";
-import Header from "@/components/ul/header";
+import PageTransitions from "@/components/CustomUi/PageTransitions";
+import StairTransition from "@/components/CustomUi/StairTransition";
+import Header from "@/components/CustomUi/header";
 
 export default function UserLayout({
   children,

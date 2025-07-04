@@ -1,4 +1,5 @@
-import PageTransitions from "@/components/ul/PageTransitions";
+import PageTransitions from "@/components/CustomUi/PageTransitions";
+import { ThemeProvider } from "@/components/Provider/ThemeProvider";
 
 export default function DashboardLayout({
   children,
@@ -6,8 +7,15 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   return (
-    // <PageTransitions>
-    <main>{children}</main>
-    // </PageTransitions>
+    <main>
+      {/* <ThemeProvider
+        attribute="class"
+        defaultTheme="system"
+        enableSystem
+        disableTransitionOnChange
+      > */}
+      {children}
+      {/* </ThemeProvider> */}
+    </main>
   );
 }
