@@ -1,5 +1,6 @@
 "use client";
 import PageTransitions from "@/components/CustomUi/PageTransitions";
+import Photo from "@/components/CustomUi/Photo";
 import Socials from "@/components/CustomUi/Socials";
 import StairTransition from "@/components/CustomUi/StairTransition";
 import Header from "@/components/CustomUi/header";
@@ -12,7 +13,6 @@ const HomePage = () => {
       <StairTransition />
       <Header />
       <div className="h-24 xl:h-24"></div>{" "}
-      {/* Spacer للتعويض عن ارتفاع الـ Header */}
       <section className="h-full pt-32 xl:pt-24">
         <div className="container mx-auto h-full">
           <div className="flex flex-col xl:flex-row items-center justify-between xl:pt-8 xl:pb-24">
@@ -34,7 +34,8 @@ const HomePage = () => {
               </p>
               {/* btn and socials */}
 
-              <div className="flex flex-col xl:flex-row items-center gap-8">
+              <div className="flex flex-col xl:flex-row items-center gap-8 mt-12">
+                {" "}
                 <Button
                   variant="outline"
                   size="lg"
@@ -44,13 +45,18 @@ const HomePage = () => {
                   <FiDownload className="text-xl" />
                 </Button>
                 <div className="mb-8 xl:mb-0">
-                  <Socials />
+                  <Socials
+                    containerStyles="flex gap-6"
+                    iconeStyles="w-9 h-9 border border-[#00ff99] rounded-full flex justify-center items-center text-[#00ff99] text-base hover:bg-[#00ff99] hover:text-[#1c1c22] hover-transition-all duration-500"
+                  />
                 </div>
               </div>
             </div>
 
             {/* photo */}
-            <div>photo</div>
+            <div>
+              <Photo />
+            </div>
           </div>
         </div>
       </section>
