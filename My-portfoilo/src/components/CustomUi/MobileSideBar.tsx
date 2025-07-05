@@ -18,6 +18,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { FaBars } from "react-icons/fa";
+import work from "../../../public/icons/work.json";
 
 const cookie = Cookie();
 const token = cookie.get("Bearer");
@@ -84,6 +85,12 @@ const MobileSideBar = () => {
               Users
             </span>
           </Link>
+
+          <Link href={"/dashboard/services"} className="nav-icon gap-2">
+            <IconPlayer icon={work} />
+            <span className="label">Services</span>
+          </Link>
+
           <Link href="/dashboard/categories" className="nav-icon gap-2">
             <IconPlayer icon={layer} />
             <span className="label text-gray-800 hover:text-emerald-600">

@@ -31,11 +31,12 @@ export async function POST(req: NextRequest) {
         link,
       },
     });
-    return (
-      NextResponse.json({
+
+    return NextResponse.json(
+      {
         message: "Service added successfully",
         data: AddServ,
-      }),
+      },
       { status: 201 }
     );
   } catch (error) {

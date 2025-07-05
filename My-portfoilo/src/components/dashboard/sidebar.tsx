@@ -10,6 +10,8 @@ import layer from "../../../public/icons/layer.json";
 import global from "../../../public/icons/global.json";
 import projects from "../../../public/icons/projects.json";
 import logout from "../../../public/icons/logout.json";
+import work from "../../../public/icons/work.json";
+
 import Cookie from "cookie-universal";
 import { useRouter } from "next/navigation";
 
@@ -35,12 +37,12 @@ const SideBar = () => {
     position: "fixed" as const,
     top: "70px",
     height: "calc(100vh - 70px)",
-    maxHeight: "calc(100vh - 70px)", // تأكيد على max-height
+    maxHeight: "calc(100vh - 70px)",
     backgroundColor: "white",
     boxShadow: "0 0 0 1px rgba(0, 0, 0, 0.1)",
     padding: "20px 10px",
     zIndex: 1000,
-    overflowY: "hidden" as const, // منع الـ scrollbar
+    overflowY: "hidden" as const,
   };
 
   return (
@@ -53,6 +55,11 @@ const SideBar = () => {
       <Link href={"/dashboard/users"} className="nav-icon gap-2">
         <IconPlayer icon={users} />
         <span className="label">Users</span>
+      </Link>
+
+      <Link href={"/dashboard/services"} className="nav-icon gap-2">
+        <IconPlayer icon={work} />
+        <span className="label">Services</span>
       </Link>
       <Link href={"/dashboard/categories"} className="nav-icon gap-2">
         <IconPlayer icon={layer} />
