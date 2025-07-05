@@ -16,23 +16,21 @@ export default function DashboardLayout({
       >
         <TopBar />
         <div style={{ display: "flex", flex: 1 }}>
-          {/* desktop sidebae */}
           <div className="hidden xl:flex items-center gap-8">
-            <div style={{ width: "140px", flexShrink: 0 }}>
+            <div style={{ width: "200px", flexShrink: 0 }}>
               <SideBar />
             </div>
           </div>
-          {/* mobile Nav */}
           <div className="xl:hidden">
             <div style={{ flexShrink: 0 }}>
               <MobileSideBar />
             </div>
           </div>
           <main
+            className="main-content"
             style={{
               flex: 1,
               padding: "2rem",
-              paddingLeft: "10rem",
               backgroundColor: "#f9f9f9",
             }}
           >

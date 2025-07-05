@@ -1,11 +1,7 @@
-import type { NextConfig } from "next";
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
-    appDir: true,
-  },
-  api: {
-    bodyParser: false,
+    turbo: false, // لإيقاف Turbopack وتشغيل Webpack
   },
 };
 

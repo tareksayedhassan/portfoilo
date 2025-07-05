@@ -35,10 +35,12 @@ const SideBar = () => {
     position: "fixed" as const,
     top: "70px",
     height: "calc(100vh - 70px)",
+    maxHeight: "calc(100vh - 70px)", // تأكيد على max-height
     backgroundColor: "white",
     boxShadow: "0 0 0 1px rgba(0, 0, 0, 0.1)",
     padding: "20px 10px",
     zIndex: 1000,
+    overflowY: "hidden" as const, // منع الـ scrollbar
   };
 
   return (
