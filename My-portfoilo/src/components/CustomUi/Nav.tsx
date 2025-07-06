@@ -33,7 +33,9 @@ const Nav = () => {
     cookie.remove("Bearer");
     router.push("/login");
   };
-
+  const dashboard = () => {
+    router.push("/dashboard");
+  };
   const links = [
     { name: "home", path: "/" },
     { name: "services", path: "/services" },
@@ -82,6 +84,14 @@ const Nav = () => {
             Log out
           </button>
         </>
+      )}
+      {role === "admin" && (
+        <button
+          onClick={dashboard}
+          className="text-[#00ff99] px-3 py-1 rounded-md hover:bg-[#00ff99] hover:text-white transition"
+        >
+          Dashboard{" "}
+        </button>
       )}
     </nav>
   );

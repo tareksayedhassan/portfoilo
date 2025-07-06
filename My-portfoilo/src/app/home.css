@@ -1,0 +1,88 @@
+@layer base {
+  /* مارجن ثابت لليسار */
+  body {
+    margin-left: 30px;
+  }
+
+  .home-section {
+    @apply w-full max-w-full overflow-x-hidden;
+  }
+
+  .home-section .container {
+    @apply w-full max-w-full px-4;
+  }
+
+  .stats-container {
+    @apply flex flex-wrap gap-4 sm:gap-6 justify-center pt-8 sm:pt-12 w-full max-w-full;
+  }
+
+  .stats-item {
+    @apply flex-1 flex gap-3 items-center justify-center min-w-0;
+  }
+
+  .photo-container {
+    @apply w-full max-w-full flex justify-center items-center;
+  }
+
+  .photo-container .w-\[280px\],
+  .photo-container .w-\[300px\],
+  .photo-container .w-\[506px\] {
+    @apply w-full max-w-full;
+  }
+
+  .photo-container .h-\[280px\],
+  .photo-container .h-\[300px\],
+  .photo-container .h-\[506px\] {
+    @apply h-auto;
+  }
+
+  .photo-container img {
+    @apply w-full h-auto max-w-full object-contain;
+  }
+
+  /* استثناء لشاشات الموبايل */
+  @media (max-width: 640px) {
+    body.home-page {
+      margin-left: 0px !important; /* إلغاء المارجن في الشاشات الصغيرة */
+      @apply padding-0 w-full overflow-x-hidden;
+    }
+
+    .home-section .flex {
+      @apply flex-col items-center justify-center w-full;
+    }
+
+    .home-text {
+      @apply w-full max-w-full px-4 text-center;
+    }
+
+    .stats-container {
+      @apply flex-col items-center gap-4 px-4;
+    }
+
+    .stats-item {
+      @apply w-full max-w-full min-w-0 text-center;
+    }
+
+    .stats-item p {
+      @apply max-w-full text-sm;
+    }
+
+    .stats-item .text-3xl {
+      @apply text-2xl;
+    }
+
+    .photo-container {
+      @apply max-w-[90vw];
+    }
+
+    .photo-container .w-\[280px\],
+    .photo-container .w-\[300px\] {
+      @apply w-[90vw] max-w-full;
+    }
+
+    .photo-container .h-\[280px\],
+    .photo-container .h-\[300px\] {
+      @apply h-auto;
+    }
+  }
+}

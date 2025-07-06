@@ -57,7 +57,9 @@ const MobileNav = () => {
       }
     }
   }, [token]);
-
+  const dashboard = () => {
+    router.push("/dashboard");
+  };
   return (
     <Sheet>
       <SheetTrigger className="text-white text-2xl">
@@ -85,6 +87,14 @@ const MobileNav = () => {
                 Log out
               </button>
             </div>
+          )}
+          {user?.role === "admin" && (
+            <button
+              onClick={dashboard}
+              className="text-[#00ff99] px-3 py-1 rounded-md hover:bg-[#00ff99] hover:text-white transition"
+            >
+              Dashboard{" "}
+            </button>
           )}
 
           <div className="flex flex-col items-center gap-6">

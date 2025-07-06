@@ -5,22 +5,26 @@ import Cookie from "cookie-universal";
 import { jwtDecode } from "jwt-decode";
 import UserProfileBadge from "./userBadge";
 import { DecodedToken } from "@/Types/CustomJWTDecoded";
+import { useEffect, useState } from "react";
 
 const TopBar = () => {
-  const cookie = Cookie();
-  const token = cookie.get("Bearer");
+  const [user, setUser] = useState<DecodedToken | null>(null);
+  useEffect(() => {
+    const cookie = Cookie();
+    const token = cookie.get("Bearer");
 
-  let decded: DecodedToken = { name: "Guest" };
-  if (token) {
-    try {
-      decded = jwtDecode<DecodedToken>(token);
-    } catch (error) {
-      console.error("Invalid token:", error);
+    let decded: DecodedToken = { name: "Guest" };
+    if (token) {
+      try {
+        decded = jwtDecode<DecodedToken>(token);
+        setUser(decded);
+      } catch (error) {
+        console.error("Invalid token:", error);
+      }
+    } else {
+      console.log("No token found");
     }
-  } else {
-    console.log("No token found");
-  }
-
+  }, []);
   return (
     <div className="top-bar flex justify-content-between align-items-center px-3 py-2 shadow-1 surface-0">
       <div className="flex align-items-center gap-2">
@@ -29,13 +33,15 @@ const TopBar = () => {
       </div>
 
       <div className="flex align-items-center gap-2">
-        <UserProfileBadge
-          name={decded.name}
-          role={decded.role}
-          avatar={decded.avatar || `/uploads/${decded?.avatar}`}
-          nameClass="text-gray-800"
-          roleClass="text-gray-500"
-        />
+        {user && (
+          <UserProfileBadge
+            name={user.name}
+            role={user.role}
+            avatar={user.avatar || `/uploads/${user?.avatar}`}
+            nameClass="text-gray-800"
+            roleClass="text-gray-500"
+          />
+        )}
       </div>
     </div>
   );

@@ -20,7 +20,11 @@ const UserProfileBadge: React.FC<Props> = ({
   return (
     <div className="flex items-center gap-3">
       <Image
-        src={avatar ? `/uploads/${avatar}` : "/user-avatar.png"}
+        src={
+          avatar && avatar !== "undefined"
+            ? `/uploads/${avatar}`
+            : "/user-avatar.png"
+        }
         alt="Avatar"
         width={40}
         height={40}

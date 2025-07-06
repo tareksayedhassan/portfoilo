@@ -7,20 +7,20 @@ import Stats from "@/components/CustomUi/Stats";
 import Header from "@/components/CustomUi/header";
 import { Button } from "@/components/ui/button";
 import { FiDownload } from "react-icons/fi";
-
+import "./home.css";
 const HomePage = () => {
   return (
     <PageTransitions>
       <StairTransition />
       <Header />
-      <div className="h-12 sm:h-16 xl:h-24"></div>
+      <div className="h-1.5 sm:h-1.5 xl:h-1.5"></div>
       <section className="home-section h-full">
         <div className="container mx-auto h-full">
           <div className="flex flex-col xl:flex-row items-center justify-between xl:pt-8 xl:pb-24 gap-8">
             {/* text */}
             <div className="home-text text-center xl:text-left text-white order-2 xl:order-1">
               <span className="text-xl">Full Stack Developer</span>
-              <h1 className="h1 mb-6">
+              <h1 className="h1 ">
                 Hello I'm <br />{" "}
                 <span className="text-[#00ff99]">Tarek Elsayed</span>
               </h1>
